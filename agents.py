@@ -1,7 +1,8 @@
 from crewai import Agent
 from textwrap import dedent
-from langchain.llms import OpenAI, Ollama
-from langchain_openai import ChatOpenAI
+# from langchain.llms import OpenAI, Ollama
+
+from langchain_community.llms import Ollama
 
 
 from crewai_tools.tools import FileReadTool
@@ -11,7 +12,7 @@ resume_file_read_tool = FileReadTool(
 	description='A tool to read the job description example file.')
 
 cover_letter_file_read_tool = FileReadTool(
-	file_path='training_cls/Junior IT Support TransPerfectCover Letter.txt',
+	file_path='all_preivous_cover_letters.txt',
 	description='A tool to read the job description example file.')
 
 # from tempfile import TemporaryDirectory
@@ -37,9 +38,10 @@ Notes.
 
 class CustomAgents:
     def __init__(self):
-        self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
+        #self.OpenAIGPT35 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
         #self.OpenAIGPT4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
-        self.Ollama = Ollama(model="llama3:8b")
+        self.Ollama = Ollama(
+            model="crewai-llama3-8b:latest")
 
     def expert_content_specialist(self):
         return Agent(
@@ -54,7 +56,7 @@ class CustomAgents:
             tools=[resume_file_read_tool, cover_letter_file_read_tool],
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.Ollama,
         )
     
     def applicant_insight_analyst(self):
@@ -69,7 +71,7 @@ class CustomAgents:
             tools=[resume_file_read_tool, cover_letter_file_read_tool],
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.Ollama,
         )
     def language_and_quality_expert(self):
         return Agent(
@@ -82,5 +84,5 @@ class CustomAgents:
             tools=[cover_letter_file_read_tool],
             allow_delegation=False,
             verbose=True,
-            llm=self.OpenAIGPT35,
+            llm=self.Ollama,
         )
