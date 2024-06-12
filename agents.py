@@ -1,5 +1,6 @@
 from crewai import Agent
 from textwrap import dedent
+from crewai_tools import PDFSearchTool
 # from langchain.llms import OpenAI, Ollama
 
 from langchain_community.llms import Ollama
@@ -14,6 +15,38 @@ resume_file_read_tool = FileReadTool(
 cover_letter_file_read_tool = FileReadTool(
 	file_path='all_preivous_cover_letters.txt',
 	description='A tool to read the job description example file.')
+
+
+
+# # Initialize the tool allowing for any PDF content search if the path is provided during execution
+# tool = PDFSearchTool()
+
+# # OR
+
+# # Initialize the tool with a specific PDF path for exclusive search within that document
+# tool = PDFSearchTool(pdf='path/to/your/document.pdf')
+
+PDFtool = PDFSearchTool(
+    config=dict(
+        llm=dict(
+            provider="ollama", # or google, openai, anthropic, llama2, ...
+            config=dict(
+                model="crewai-llama3-8b:latest",
+                temperature=0.5,
+                # top_p=1,
+                # stream=true,
+            ),
+        ),
+        embedder=dict(
+            provider="ollama",
+            config=dict(
+                model="models/embedding-001",
+                task_type="retrieval_document",
+                # title="Embeddings",
+            ),
+        ),
+    )
+)
 
 # from tempfile import TemporaryDirectory
 

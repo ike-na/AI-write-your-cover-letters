@@ -52,6 +52,7 @@ class CustomCrew:
             agents=[expert_content_specialist, applicant_insight_analyst, language_and_quality_expert],
             tasks=[content_creation, profile_matching, contnent_refinement],
             verbose=True,
+            process=Process.sequential,
         )
 
         result = crew.kickoff()

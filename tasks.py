@@ -19,10 +19,14 @@ class CustomTasks:
     def __tip_section(self):
         return "If you do your BEST WORK, I'll give you a $10,000 commission!"
 
-    def content_creation(self, agent, var1):
+    def content_creation(self, agent, var1: str):
         return Task(
             description=dedent(
                 f"""
+            **Task**:
+            **Description**:
+            **Notes**:
+
             Analyzes the job description from the .xlsx file.
             Analyzes the applicant's resume from the resume.txt file to understand their skills, experiences, and achievements.
             Organizes the content of the cover letter, ensuring a logical flow from introduction to conclusion.
@@ -38,16 +42,21 @@ class CustomTasks:
             Note: {self.__tip_section()}
             """ 
             ),
+            agent=agent,
             expected_output=dedent("""\
 			The Expert Content Specialist provides the initial draft. Highlights the applicant’s key experiences that match the job description, using specific examples. Details the skills and achievements that make the applicant a strong candidate. Indicates the applicant’s interest in further discussing their qualifications."""),
-						
-            agent=agent,
+			
         )
 
-    def profile_matching(self, agent):
+    def profile_matching(self, agent, context):
         return Task(
             description=dedent(
                 f"""
+                **Task**:
+                **Description**:
+                **Notes**:
+
+                
             Extracts key information from the applicant's resume, such as skills, experiences, and achievements.
             Analyzes the job description from the .xlsx file and determines how well the applicant's profile matches the job.
             Identifies the most relevant strengths and experiences to highlight in the cover letter.
@@ -60,15 +69,22 @@ class CustomTasks:
             Note: {self.__tip_section()}
             """
             ),
+            agent=agent,
+            context=context,
             expected_output=dedent("""\
 			Lists the primary skills from the applicant’s resume that are relevant to the job. Summarizes the applicant’s strengths in relation to the job description. Recommends key selling points to highlight in the cover letter. Provides tips for tailoring the cover letter to the company’s culture and job specifics."""),
-            agent=agent,
+            
         )
     
-    def contnent_refinement(self, agent):
+    def contnent_refinement(self, agent, context):
         return Task(
             description=dedent(
                 f"""
+                **Task**:
+                **Description**:
+                **Notes**:
+
+                
             Grammar and Spelling Check: Identifies and corrects any grammatical errors, typos, or inconsistencies in the cover letter.
             Ensures consistency in style, tone, and formatting throughout the document.
             Improves clarity and conciseness, removing any redundant or unclear phrases.
@@ -80,7 +96,9 @@ class CustomTasks:
             Note*: {self.__tip_section()}
             """
             ),
+            agent=agent,
+            context=context,
             expected_output=dedent("""\
 			The Language and Quality Expert reviews the draft, making necessary edits and ensuring the final cover letter is polished, error-free and imitates the applicant's writing style."""),
-            agent=agent,
+            
         )
