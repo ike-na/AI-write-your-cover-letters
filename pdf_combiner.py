@@ -9,8 +9,6 @@ output_path = os.path.join(folder_path, output_filename)
 if os.path.exists(output_path):
     user_choice = input(f"'{output_filename}' already exists. Do you want to overwrite it? (y/n): ").strip().lower()
     if user_choice == 'y':
-
-
         try:
             os.remove(output_path)
             print(f"Deleted existing '{output_filename}'.")
@@ -36,7 +34,6 @@ if os.path.exists(output_path):
     elif user_choice != 'y' and user_choice != 'n':
         print("Invalid input. Exiting without combining PDFs.")
         exit()
-
 
 else:
     pdf_files = [os.path.join(folder_path, file) for file in os.listdir(folder_path) if file.endswith('.pdf')]
