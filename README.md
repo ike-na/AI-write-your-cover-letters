@@ -37,7 +37,7 @@ The project uses a local llm model llama3-8b which takes about 4.7 GB from your 
 
 ## Before Runnig
 
-Load your previous cover letters into the training folder.
+The program embeds your previous cover letters into a vector database, **requiring you to load them into the training folder.**
 
 
 - [Purpose](#purpose)
@@ -48,4 +48,6 @@ Load your previous cover letters into the training folder.
 
 ## P.S.
 
-The web scraper only scrapes Duunitori right now, but it can be modified easily. For this project, there is no sense to add more job advertisements to the .xlsx file due to the amount of time computing needed to write just one cover letter locally.
+The web scraper only scrapes Duunitori right now, but it can be modified easily. 
+
+For this project, there is no sense to add more job advertisements to the .xlsx file where the AI would find the job description, due to the vast amount of time and computing needed to write just one cover letter locally.
