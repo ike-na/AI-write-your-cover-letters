@@ -1,5 +1,4 @@
 .env
 __pycache__
-resume.txt
-all_preivous_cover_letters.txt
 /training/*
+/chroma_vector_db

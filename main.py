@@ -1,75 +1,40 @@
-import os
-from crewai import Agent, Task, Crew, Process
-from langchain_openai import ChatOpenAI
-from decouple import config
-
-from textwrap import dedent
-from agents import CustomAgents
-from tasks import CustomTasks
-
-from dotenv import load_dotenv
-load_dotenv()
+from langchain_community.llms import Ollama
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnablePassthrough
+from utilities import get_chunks, get_retriever, get_vectorstore
 
 
-# os.environ["OPENAI_API_KEY"] = config("OPENAI_API_KEY")
-os.environ["OPENAI_API_KEY"] = "NA"
+
+def main():
+  ollama = Ollama(model="llama3")
+  chunks = get_chunks("training/combined.pdf")
+  vectorstore = get_vectorstore(chunks)
+
+  retriever, prompt = get_retriever(vectorstore, ollama)
+
+  chain = (
+      {"context": retriever, "question": RunnablePassthrough()}
+      | prompt
+      | ollama
+      | StrOutputParser()
+  )
+
+  requirements_list = []
+  while True:
+      requirement = input("Enter a job task or requirement (or type 'f' to finish): \n")
+      if requirement.lower() == 'f':
+          break
+      requirements_list.append(requirement.strip())
+
+  formatted_requirements = ", ".join(requirements_list)
+  print("\nFixing the OllamaEmbeddings and writing the cover letter...\n")
+
+  result = chain.invoke({"question": f"Can you write me a 200-300 word cover letter to the unnamed position [position] at unnamed company [company]. Make sure that the requirements are answered in bullet points. The requirements are: {formatted_requirements}?"})
+  print(result)
+
+  # vectorstore.delete_collection() # Uncomment this line to delete the vectorstore
 
 
-class CustomCrew:
-    # def __init__(self, var1, var2):
-    #     self.var1 = var1
-    #     self.var2 = var2
-    def __init__(self, var1):
-        self.var1 = var1
 
-    def run(self):
-        # Define your custom agents and tasks in agents.py and tasks.py
-        agents = CustomAgents()
-        tasks = CustomTasks()
-
-        # Define your custom agents and tasks here
-        expert_content_specialist = agents.expert_content_specialist()
-        applicant_insight_analyst = agents.applicant_insight_analyst()
-        language_and_quality_expert = agents.language_and_quality_expert()
-
-        # Custom tasks include agent name and variables as input
-        content_creation = tasks.content_creation(
-            expert_content_specialist,
-            self.var1
-            # self.var2,
-        )
-
-        profile_matching = tasks.profile_matching(
-            applicant_insight_analyst,
-        )
-
-        contnent_refinement = tasks.contnent_refinement(
-            language_and_quality_expert,
-        )
-
-        # Define your custom crew here
-        crew = Crew(
-            agents=[expert_content_specialist, applicant_insight_analyst, language_and_quality_expert],
-            tasks=[content_creation, profile_matching, contnent_refinement],
-            verbose=True,
-            process=Process.sequential,
-        )
-
-        result = crew.kickoff()
-        return result
-
-
-# This is the main function that you will use to run your custom crew.
 if __name__ == "__main__":
-    print("## Welcome to Crew AI ##")
-    print("-------------------------------")
-    var1 = input(dedent("""Enter how many jobs you want to apply: """))
-    # var2 = input(dedent("""Enter variable 2: """))
-
-    # custom_crew = CustomCrew(var1, var2)
-    custom_crew = CustomCrew(var1)
-    result = custom_crew.run()
-    print("\n\n########################")
-    print("## Here is you custom crew run result:")
-    print("########################\n")
-    print(result)
+    main()
