@@ -10,9 +10,9 @@ Using a simple web scraper and AI agents to automate boring cover letter writing
 This project aimed to automate cover letter writing by web scraping job posts from sites like LinkedIn, Duunitori, and Oikotie, and using AI agents to generate tailored cover letters for each position. The end goal was to have dozens of cover letters ready to go, with a minimal effort.
 
 **However:**
-- Running a large porject with a online llm model can easily become expensive.
+- Running a large porject with a online LLM model can easily become expensive.
 
-- There could be privacy issues with online llms.
+- There could be privacy issues with online LLMs.
 
 
 Therefore, I want to keep this as a local project, making the llama3 family of models the best choice for my needs. I am using the llama3 8-billion-parameter model instead of the 70-billion-parameter model, mainly for hardware reasons. (To be honest, my PC is close to the suns temperature just by running the llama3-8b.)
@@ -24,15 +24,15 @@ This project is an experiment in embedding my previous cover letters into a vect
 
 ## In the Case You Are Cloning the Repository
 
-The project uses a local llm model llama3-8b which takes about 4.7 GB from your drive to download. See more [Ollama](https://ollama.com/).
+The project leverages a local LLM model, llama3-8b, which requires about 4.7 GB of disk space. For more information, visit [Ollama](https://ollama.com/).
 
-- If WSL workflow is familiar to you, and want to install a local llm, you can just:
+- If you're familiar with the WSL (Windows Subsystem for Linux) workflow and want to install a local LLM, simply run:
 
     ```
     curl -fsSL https://ollama.com/install.sh | sh
     ```
 
-- Then:
+- Once installed, pull the llama3 model:
     ```
     ollama pull llama3
     ```
@@ -45,11 +45,19 @@ The program embeds your previous cover letters into a vector database, **requiri
 
 - [Purpose](#purpose)
 - [Purpose Now](#purpose-now)
-- [In the Case You Are Cloning the Repository](#In-the-Case-You-Are-Cloning-the-Repository)
-- [Before Runnig](#Before-Runnig)
-- [P.S.](#P.S.)
+- [In the Case You Are Cloning the Repository](#in-the-case-you-are-cloning-the-repository)
+- [Before Runnig](#before-runnig)
+- [Additional Notes](#additional-notes)
+- [Post Script](#post-script)
 
-## P.S.
+## Additional Notes
+**System Requirements:** Make sure your PC meets the necessary requirements to run the llama3-8b model smoothly. While it's not as heavy as the 70-billion-parameter model, it still requires a decent amount of computational power and memory.
+
+- **Data Privacy:** By keeping the AI local, your data remains private and secure on your own machine.
+
+- **Customization:** You can further customize the AI’s output by tweaking the embedded cover letters, giving you more control over the final product.
+
+## Post Script
 
 The web scraper only scrapes Duunitori right now, but it can be modified easily. 
 
