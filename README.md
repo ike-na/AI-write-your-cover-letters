@@ -55,7 +55,7 @@ The program embeds your previous cover letters into a vector database, **requiri
 
 - **Data Privacy:** By keeping the AI local, your data remains private and secure on your own machine.
 
-- **Customization:** You can further customize the AI’s output by tweaking the AI prompts in the utilities.py and main.py files. You can also choose to use any cover letters you want, giving you more control over the final product.
+- **Customization:** You can further customize the AI’s output by tweaking the AI prompts in the *utilities.py* and *main.py* files. You can also choose to use any cover letters you want, giving you more control over the final product.
 
 ## Post Script
 
