@@ -43,7 +43,7 @@ The project leverages a local LLM model, llama3-8b, which requires about 4.7 GB 
 The program embeds your previous cover letters into a vector database, **requiring you to load them into the training folder.** AI will then use the vector database values to generate new cover letters replicating the users unique writing style based on the job requirements given by the user.
 
 
-- [Purpose](#purpose)
+- [Ex-Purpose](#ex-purpose)
 - [Purpose Now](#purpose-now)
 - [In the Case You Are Cloning the Repository](#in-the-case-you-are-cloning-the-repository)
 - [Before Runnig](#before-runnig)
