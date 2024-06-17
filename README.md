@@ -61,4 +61,4 @@ The program embeds your previous cover letters into a vector database, **requiri
 
 The web scraper only scrapes Duunitori right now, but it can be modified easily. 
 
-For this project, there is no sense to add more job advertisements to the .xlsx file where the AI would find the job description, due to the vast amount of time and computing needed to write just one cover letter locally.
+For this project, as long as I am the sole user, it is impractical to add more job advertisements to the .xlsx file for the AI. The time and computing resources required to produce a single cover letter locally are too extensive.
