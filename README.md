@@ -19,7 +19,7 @@ Therefore, I want to keep this as a local project, making the llama3 family of m
 
 
 ## Purpose Now
-This project is an experiment in embedding my previous cover letters into a vector database to see if a **local** AI can write better cover letters than me. Also I want a tool that can generate cover letters that look like my own. 
+Now, this project is an experiment in embedding my previous cover letters into a vector database. The goal is to see if a **local** AI can craft better cover letters than I can. Additionally, I want a tool that generates cover letters that mimic my writing style, ensuring each letter is unique but still "me."
 
 
 ## In the Case You Are Cloning the Repository
