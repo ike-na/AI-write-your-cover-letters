@@ -7,7 +7,7 @@ Using a simple web scraper and AI agents to automate cover letter writing.
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
 ## Ex-Purpose
-This project aimed to automate cover letter writing by web scraping job posts from sites like LinkedIn, Duunitori, and Oikotie, and using AI agents to generate tailored cover letters for each position. The end goal was to have dozens of cover letters ready to go, with a minimal effort.
+This project sought to automate the creation of cover letters by web scraping job posts from sites like LinkedIn, Duunitori, and Oikotie, and then employing AI agents to generate customized cover letters for each position. The end goal was to have dozens of cover letters ready to go, with a minimal effort.
 
 **However:**
 - Running a large porject with a online LLM model can easily become expensive.
