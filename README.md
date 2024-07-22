@@ -1,5 +1,5 @@
 # AI-write-your-cover-letters
-Using a simple web scraper and AI agents to automate boring cover letter writing.
+Using a simple web scraper and AI agents to automate cover letter writing.
 
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
